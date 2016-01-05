@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Przypominacz</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="title_activity_search">Wyszukaj</string>
+    <string name="action_logout">Wyloguj</string>
+
+    <string name="user_name">Imię Nazwisko</string>
+    <string name="user_email">email_użytkownika@example.com</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">Ogólne</string>
+
+    <string name="pref_title_social_recommendations">Włącz rekomendacje społecznościowe</string>
+    <string name="pref_description_social_recommendations">Rekomendacje kontaktów na podstawie historii wiadomości
+    </string>
+
+    <string name="pref_title_display_name">Wyświetl imię</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Dodaj znajomych do wiadomości</string>
+    <string-array name="pref_example_list_titles">
+        <item>Zawsze</item>
+        <item>Kiedy możliwe</item>
+        <item>Nigdy</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Dane &amp; synchronizacja</string>
+
+    <string name="pref_title_sync_frequency">Częstotliwość synchronizacji</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minut</item>
+        <item>30 minut</item>
+        <item>1 godzina</item>
+        <item>3 godziny</item>
+        <item>6 godzin</item>
+        <item>Nigdy</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">Konta i synchronizacja</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Powiadomienia</string>
+
+    <string name="pref_title_new_message_notifications">Powiadomienia o premierach</string>
+
+    <string name="pref_title_ringtone">Dzwonek</string>
+    <string name="pref_ringtone_silent">Cichy</string>
+
+    <string name="pref_title_vibrate">Wibracje</string>
+    <string name="title_activity_menu_obserwowane">MenuObserwowane</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>
