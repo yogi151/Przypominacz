@@ -26,10 +26,8 @@
         style="@style/AppTheme" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxHeight="10dp"
-        android:maxWidth="10dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:src="@drawable/plus"
         android:layout_margin="2dp"
         android:id="@+id/addOrRemove"

@@ -11,23 +11,41 @@ import android.widget.TextView;
 
 public class FilmyAdapter extends ArrayAdapter<String>{
 
+    private static class FilmyAdapterViewHolder {
+        public String title;
+        public TextView filmTitle;
+        public ImageView filmCover;
+    }
+
     FilmyAdapter(Context context, String[] title){
         super(context,R.layout.filmy_row_layout, title);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater filmInflater = LayoutInflater.from(getContext());
-        View customView = filmInflater.inflate(R.layout.filmy_row_layout, parent, false);
 
-        String title = getItem(position);
-        TextView filmTitle = (TextView)customView.findViewById(R.id.filmTitle);
-        ImageView filmCover = (ImageView)customView.findViewById(R.id.filmCover);
 
-        filmTitle.setText(title);
+        FilmyAdapterViewHolder holder;
+        if (convertView == null){
+
+            holder = new FilmyAdapterViewHolder();
+            LayoutInflater filmInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            convertView = filmInflater.inflate(R.layout.filmy_row_layout, parent, false);
+            holder.filmTitle = (TextView)convertView.findViewById(R.id.filmTitle);
+            holder.filmCover = (ImageView)convertView.findViewById(R.id.filmCover);
+            holder.title = getItem(position);
+
+            convertView.setTag(holder);
+        }else{
+            holder = (FilmyAdapterViewHolder)convertView.getTag();
+        }
+
+        holder.title = getItem(position);
+        holder.filmTitle.setText(holder.title);
         //TODO: zmienić na plakat filmu
-        filmCover.setImageResource(R.drawable.mybackground);
+        holder.filmCover.setImageResource(R.drawable.avatar);
 
-        return customView;
+        return convertView;
     }
 }

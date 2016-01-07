@@ -26,7 +26,7 @@ public class MenuFilmy_fragment extends Fragment{
 
     private View rootview;
     //TODO: lista top filmów z filmweba
-    private String[] topFilms = {"Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato"};
+    private String[] topFilms = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć","siedem", "osiem", "dziewięć", "dziesięć", "jedenaście", "dwana","trzyna", "czterna", "piętna", "szesna", "siedemna", "osiemna","dziewiętna", "dwadz", "d jeden", "d dwa", "d trzy", "d cztery"};
 
     @Nullable
     @Override
