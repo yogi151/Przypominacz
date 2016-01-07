@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import android.support.v4.app.Fragment;
 
-
 /**
  * Created by Maciapek on 2015-12-30.
  */

@@ -19,12 +19,13 @@ import android.support.v4.app.Fragment;
 
 public class HomeActivity extends Fragment{
 
-    View rootview;
+    private View rootview;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.home_layout, container, false);
+
         return rootview;
     }
 }

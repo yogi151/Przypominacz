@@ -1,6 +1,7 @@
 package com.example.maciapek.przypominacz;
 
-//import android.app.Fragment;
+
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
+import android.widget.ImageView;
 
 /**
  * Created by Maciapek on 2015-12-30.
@@ -28,17 +30,3 @@ public class MenuFilmy_fragment extends Fragment{
     }
 }
 
-
-/*public class MenuFilmy_fragment extends AppCompatActivity{
-
-    public static final String TAG = "filmy";
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.filmy_layout);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
-}
-*/

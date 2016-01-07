@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private boolean viewIsAtHome;
 
-     /* String NAME = "Maciap M";
+     /* String NAME = "M M";
     String EMAIL = "@string/user_email";
     int PROFILE = R.drawable.avatar;*/
 
@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
 
+        else if (id == R.id.action_search) {
+            Intent intent = new Intent(this, SearchMain.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -126,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viewIsAtHome = false;
                 break;
 
+
         }
 
         if (fragment != null) {
@@ -148,17 +155,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
        displayView(item.getItemId());
-
-    /*    int id = item.getItemId();
-
-        if (id == R.id.nav_obserwowane) {
-            Intent intent = new Intent(this, Mainnh2Activity.class);
-            startActivity(intent);
-            return true;
-        }*/
-
-
-
         return true;
     }
 

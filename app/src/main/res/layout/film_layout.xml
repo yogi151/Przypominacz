@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/upSection"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/mybackground"
+            android:layout_gravity="start"
+            android:layout_weight="5"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/engTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/engTitle"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rate"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/numberOfVotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/numberOfVotes"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/duration"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/downSection"
+        android:layout_weight="2"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/director"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/director"
+                android:layout_marginTop="18dp"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/gatunek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/scenario"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/produkcja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/produkcja"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/premieraPl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/premieraPl"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/premieraSwiat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/premieraSwiat"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp" >
+            </TextView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

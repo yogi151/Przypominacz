@@ -12,6 +12,18 @@
     <string name="user_name">Imię Nazwisko</string>
     <string name="user_email">email_użytkownika@example.com</string>
 
+    <string name="prompt_search">Wyszukaj</string>
+    <string name="description">Ut lacus arcu, mattis eu vestibulum et, placerat vitae neque. Ut et ultricies nunc. Vivamus sed felis nulla. Phasellus rutrum malesuada arcu, vel scelerisque dui malesuada in. </string>
+    <string name="engTitle">English Title (Year)</string>
+    <string name="rate">Ocena: 0,0</string>
+    <string name="numberOfVotes">Gołsy: 000 000</string>
+    <string name="duration">Czas trwania: 2h22min</string>
+    <string name="director">Reżyseria: Imię Nazwisko</string>
+    <string name="scenario">Scenariusz: Imię Nazwisko</string>
+    <string name="gatunek">Gatunek: gatunek</string>
+    <string name="produkcja">Produkcja: Kraj</string>
+    <string name="premieraPl">Premiera (Polska): 10.10.2012</string>
+    <string name="premieraSwiat">Premiera (Swiat): 10.10.2012</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -70,5 +82,6 @@
     <string name="pref_title_vibrate">Wibracje</string>
     <string name="title_activity_menu_obserwowane">MenuObserwowane</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="title_activity_search_main">Wyszukaj</string>
 </resources>
