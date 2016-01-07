@@ -1,18 +1,22 @@
 package com.example.maciapek.przypominacz;
 
 
-import android.media.Image;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//import android.widget.Toolbar;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
 
 /**
  * Created by Maciapek on 2015-12-30.
@@ -20,12 +24,32 @@ import android.widget.ImageView;
 
 public class MenuFilmy_fragment extends Fragment{
 
-    View rootview;
+    private View rootview;
+    //TODO: lista top filmów z filmweba
+    private String[] topFilms = {"Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato","Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato"};
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.filmy_layout, container, false);
+
+        ListAdapter topFilmsAdapter = new FilmyAdapter(getActivity().getApplicationContext(), topFilms);
+        ListView topFilmy = (ListView)rootview.findViewById(R.id.topFilmy);
+        topFilmy.setAdapter(topFilmsAdapter);
+
+        topFilmy.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String topFilm = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(getActivity().getApplicationContext(), topFilm, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        );
+
+
+
         return rootview;
     }
 }
