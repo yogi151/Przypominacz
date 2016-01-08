@@ -8,7 +8,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:src="@drawable/mybackground"
+        android:src="@drawable/film"
         android:layout_margin="10dp"
         android:id="@+id/filmCover"
         android:layout_gravity="center"/>

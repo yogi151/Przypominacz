@@ -1,7 +1,6 @@
 package com.example.maciapek.przypominacz;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -13,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -47,15 +47,17 @@ public class FilmyAdapter extends ArrayAdapter<String>{
 
         holder.title = getItem(position);
         holder.filmTitle.setText(holder.title);
-        //TODO: zmienić na plakat filmu
-        holder.filmCover.setImageResource(R.drawable.avatar);
 
-       // new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+
+        //TODO: zmienić na plakat filmu
+        //holder.filmCover.setImageResource(R.drawable.avatar);
+        holder.position = position;
+        new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://1.fwcdn.pl/po/16/44/671644/7700784.3.jpg");
 
         return convertView;
     }
 
-    /*private static class ThumbnailTask extends AsyncTask<Void,Void,Bitmap> {
+    private static class ThumbnailTask extends AsyncTask<String,Void,Bitmap> {
         private int mPosition;
         private FilmyAdapterViewHolder mHolder;
 
@@ -64,26 +66,23 @@ public class FilmyAdapter extends ArrayAdapter<String>{
             mHolder = holder;
         }
 
-        @Override
-        protected Bitmap doInBackground(Void... params) {
-            // Download bitmap here
-            //TODO: pobranie okładki
 
-            Bitmap bitmap = getBitmapFromURL("http://1.fwcdn.pl/po/16/44/671644/7700784.3.jpg");
-            //Bitmap resizedbitmap = getResizedBitmap(bitmap, 200, 200);
-            return bitmap;
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            String param = params[0];
+            Bitmap bitmap = getBitmapFromURL(param);
+            return getResizedBitmap(bitmap, 200, 200);
         }
 
         public Bitmap getBitmapFromURL(String src) {
             try {
-                java.net.URL url = new java.net.URL(src);
-                HttpURLConnection connection = (HttpURLConnection) url
-                        .openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                Bitmap myBitmap = BitmapFactory.decodeStream(input);
-                return myBitmap;
+                URL url = new URL(src);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                //connection.setDoInput(true);
+                //connection.connect();
+                InputStream input = new BufferedInputStream(connection.getInputStream());
+                return BitmapFactory.decodeStream(input);
+
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -101,9 +100,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
             matrix.postScale(scaleWidth, scaleHeight);
 
             // "RECREATE" THE NEW BITMAP
-            Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-
-            return resizedBitmap;
+            return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
         }
 
         @Override
@@ -113,7 +110,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
             }
         }
     }
-*/
+
     private static class FilmyAdapterViewHolder {
         public String title;
         public TextView filmTitle;
