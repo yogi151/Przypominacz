@@ -1,6 +1,7 @@
 package com.example.maciapek.przypominacz;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -19,12 +20,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
+
 public class FilmyAdapter extends ArrayAdapter<String>{
 
-    FilmyAdapter(Context context, String[] title){
+    private  String[] coverUri;
+    FilmyAdapter(Context context, String[] title, String[] coverUri){
         super(context,R.layout.filmy_row_layout, title);
+        this.coverUri = coverUri;
     }
 
+    //TODO: jeśli film w obserwowanych zmieniać ikonę na minus
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -39,6 +44,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
             holder.filmTitle = (TextView)convertView.findViewById(R.id.filmTitle);
             holder.filmCover = (ImageView)convertView.findViewById(R.id.filmCover);
             holder.title = getItem(position);
+            //holder.coverUri = getItem(position);
 
             convertView.setTag(holder);
         }else{
@@ -47,12 +53,10 @@ public class FilmyAdapter extends ArrayAdapter<String>{
 
         holder.title = getItem(position);
         holder.filmTitle.setText(holder.title);
+        //holder.coverUri = getItem(position);
 
-
-        //TODO: zmienić na plakat filmu
-        //holder.filmCover.setImageResource(R.drawable.avatar);
         holder.position = position;
-        new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://1.fwcdn.pl/po/16/44/671644/7700784.3.jpg");
+        new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, coverUri[position]);
 
         return convertView;
     }
@@ -70,22 +74,20 @@ public class FilmyAdapter extends ArrayAdapter<String>{
         @Override
         protected Bitmap doInBackground(String... params) {
             String param = params[0];
-            Bitmap bitmap = getBitmapFromURL(param);
-            return getResizedBitmap(bitmap, 200, 200);
+            return getBitmapFromURL(param);
         }
 
         public Bitmap getBitmapFromURL(String src) {
             try {
                 URL url = new URL(src);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                //connection.setDoInput(true);
-                //connection.connect();
                 InputStream input = new BufferedInputStream(connection.getInputStream());
-                return BitmapFactory.decodeStream(input);
+                Bitmap bitmap = BitmapFactory.decodeStream(input);
+                return getResizedBitmap(bitmap, 200, 200);
 
             } catch (IOException e) {
                 e.printStackTrace();
-                return null;
+                return BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.reel);
             }
         }
 
@@ -115,6 +117,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
         public String title;
         public TextView filmTitle;
         public ImageView filmCover;
+        //public String coverUri;
         public int position;
     }
 
