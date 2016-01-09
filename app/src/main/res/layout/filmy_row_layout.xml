@@ -3,7 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp">
+    android:padding="4dp"
+    android:background="@color/colorBackground">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="41dp"
@@ -13,17 +14,33 @@
         android:id="@+id/filmCover"
         android:layout_gravity="center"/>
 
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_weight="1100">
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Large Text"
         android:id="@+id/filmTitle"
         android:layout_margin="7dp"
-        android:layout_weight="1100"
         android:textColor="#000000"
         android:layout_gravity="center"
         style="@style/AppTheme" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/releaseDate"
+        android:textColor="@color/colorGrey2"/>
+</LinearLayout>
 
     <ImageView
         android:layout_width="28dp"

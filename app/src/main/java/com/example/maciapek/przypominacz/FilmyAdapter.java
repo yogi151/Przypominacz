@@ -24,9 +24,11 @@ import java.net.URL;
 public class FilmyAdapter extends ArrayAdapter<String>{
 
     private  String[] coverUri;
-    FilmyAdapter(Context context, String[] title, String[] coverUri){
+    private String[] releaseDate;
+    FilmyAdapter(Context context, String[] title, String[] coverUri, String[] releaseDate){
         super(context,R.layout.filmy_row_layout, title);
         this.coverUri = coverUri;
+        this.releaseDate = releaseDate;
     }
 
     //TODO: jeśli film w obserwowanych zmieniać ikonę na minus
@@ -42,9 +44,11 @@ public class FilmyAdapter extends ArrayAdapter<String>{
 
             convertView = filmInflater.inflate(R.layout.filmy_row_layout, parent, false);
             holder.filmTitle = (TextView)convertView.findViewById(R.id.filmTitle);
+            holder.releaseDate = (TextView)convertView.findViewById(R.id.releaseDate);
             holder.filmCover = (ImageView)convertView.findViewById(R.id.filmCover);
             holder.title = getItem(position);
-            //holder.coverUri = getItem(position);
+            holder.date = releaseDate[position];
+            holder.coverUri = coverUri[position];
 
             convertView.setTag(holder);
         }else{
@@ -53,10 +57,12 @@ public class FilmyAdapter extends ArrayAdapter<String>{
 
         holder.title = getItem(position);
         holder.filmTitle.setText(holder.title);
-        //holder.coverUri = getItem(position);
+        holder.date = releaseDate[position];
+        holder.releaseDate.setText("Premiera: "  + holder.date);
+        holder.coverUri = coverUri[position];
 
         holder.position = position;
-       // new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, coverUri[position]);
+        new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, holder.coverUri);
 
         return convertView;
     }
@@ -115,9 +121,11 @@ public class FilmyAdapter extends ArrayAdapter<String>{
 
     private static class FilmyAdapterViewHolder {
         public String title;
+        public String date;
+        public TextView releaseDate;
         public TextView filmTitle;
         public ImageView filmCover;
-        //public String coverUri;
+        public String coverUri;
         public int position;
     }
 
