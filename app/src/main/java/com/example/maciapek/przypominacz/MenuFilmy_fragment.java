@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,8 +28,19 @@ public class MenuFilmy_fragment extends Fragment{
         View rootview = inflater.inflate(R.layout.filmy_layout, container, false);
 
         ListAdapter topFilmsAdapter = new FilmyAdapter(getActivity().getApplicationContext(), topFilms, coverUri, releaseDateF);
-        ListView topFilmy = (ListView) rootview.findViewById(R.id.topFilmy);
+        final ListView topFilmy = (ListView) rootview.findViewById(R.id.topFilmy);
         topFilmy.setAdapter(topFilmsAdapter);
+
+
+
+        /*ImageView icon = (ImageView)topFilmy.findViewById(R.id.addOrRemove);
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "Add od remove.";
+                Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
         topFilmy.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -36,7 +48,14 @@ public class MenuFilmy_fragment extends Fragment{
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String topFilm = String.valueOf(parent.getItemAtPosition(position));
                         Toast.makeText(getActivity().getApplicationContext(), topFilm, Toast.LENGTH_SHORT).show();
-
+                        ImageView icon = (ImageView)view.findViewById(R.id.addOrRemove);
+                        icon.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String message = "Add od remove.";
+                                Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
         );

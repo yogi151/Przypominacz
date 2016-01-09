@@ -3,12 +3,12 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp"
+    android:padding="2dp"
     android:background="@color/colorBackground">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:src="@drawable/reel"
         android:layout_margin="8dp"
         android:id="@+id/filmCover"
@@ -27,7 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Large Text"
         android:id="@+id/filmTitle"
-        android:layout_margin="7dp"
+        android:layout_margin="6dp"
         android:textColor="@color/colorTextPrimary"
         android:layout_gravity="center"
         style="@style/AppTheme" />
@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="7dp"
+        android:layout_margin="6dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/releaseDate"
@@ -43,11 +43,12 @@
 </LinearLayout>
 
     <ImageView
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/plus"
-        android:layout_margin="2dp"
+        android:layout_margin="3dp"
         android:id="@+id/addOrRemove"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        />
 
 </LinearLayout>
