@@ -1,5 +1,6 @@
 package com.example.maciapek.przypominacz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,7 +39,7 @@ public class MojeKanaly  extends Fragment{
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String topFilm = String.valueOf(parent.getItemAtPosition(position));
                         Toast.makeText(getActivity().getApplicationContext(), topFilm, Toast.LENGTH_SHORT).show();
-                        final ImageView icon = (ImageView)view.findViewById(R.id.addOrRemove);
+                        final ImageView icon = (ImageView) view.findViewById(R.id.addOrRemove);
                         icon.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -59,7 +60,6 @@ public class MojeKanaly  extends Fragment{
                     }
                 }
         );
-
         return rootview;
     }
 }
