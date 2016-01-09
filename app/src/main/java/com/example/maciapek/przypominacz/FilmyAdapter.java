@@ -56,7 +56,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
         //holder.coverUri = getItem(position);
 
         holder.position = position;
-        new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, coverUri[position]);
+       // new ThumbnailTask(position, holder).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, coverUri[position]);
 
         return convertView;
     }
