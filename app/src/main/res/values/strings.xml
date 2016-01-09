@@ -25,6 +25,8 @@
     <string name="produkcja">Produkcja: Kraj</string>
     <string name="premieraPl">Premiera (Polska): 10.10.2012</string>
     <string name="premieraSwiat">Premiera (Swiat): 10.10.2012</string>
+    <string name="added">Dodano do obserwowanych.</string>
+    <string name="removed">Usunięto z obserwowanych.</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

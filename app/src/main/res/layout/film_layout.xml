@@ -12,7 +12,6 @@
         android:orientation="horizontal"
         android:layout_weight="3"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:paddingBottom="16dp">
 
         <ImageView
@@ -21,17 +20,20 @@
             android:layout_height="match_parent"
             android:src="@drawable/mybackground"
             android:layout_gravity="start"
-            android:layout_weight="5"
-            />
+            android:layout_weight="5" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1000"
             android:orientation="vertical"
             android:paddingTop="20dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="16dp">
 
             <TextView
                 android:id="@+id/engTitle"
@@ -66,6 +68,16 @@
 
         </LinearLayout>
 
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/plus"
+                android:layout_margin="5dp"
+                android:id="@+id/addOrRemove"
+                android:layout_gravity="top"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -43,10 +43,10 @@
 </LinearLayout>
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:src="@drawable/plus"
-        android:layout_margin="3dp"
+        android:layout_margin="9dp"
         android:id="@+id/addOrRemove"
         android:layout_gravity="center"
         />
