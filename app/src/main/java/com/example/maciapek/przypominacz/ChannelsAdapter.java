@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class ChannelsAdapter extends ArrayAdapter<String> {
 
+    private String[] releaseDate;
 
     ChannelsAdapter(Context context, String[] title){
         super(context,R.layout.kanal_row_layout, title);

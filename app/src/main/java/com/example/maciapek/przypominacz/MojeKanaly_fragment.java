@@ -1,10 +1,7 @@
  package com.example.maciapek.przypominacz;
 
-//import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +9,7 @@ import android.view.ViewGroup;
 
 import android.support.v4.app.Fragment;
 
-/**
- * Created by Maciapek on 2015-12-30.
- */
+
 public class MojeKanaly_fragment extends Fragment implements MaterialTabListener{
     private View rootview;
     private MaterialTabHost tabHost;
@@ -33,8 +28,6 @@ public class MojeKanaly_fragment extends Fragment implements MaterialTabListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootview = inflater.inflate(R.layout.moje_kanaly_layout, container, false);
-
-        //TabLayout tabLayout = (TabLayout) rootview.findViewById(R.id.tab_layout);
 
         tabHost = (MaterialTabHost)rootview.findViewById(R.id.materialTabHost);
         viewPager = (ViewPager)rootview.findViewById(R.id.viewPager);
