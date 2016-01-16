@@ -21,6 +21,8 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
+import com.example.maciapek.przypominacz.utils.AppCompatPreferenceActivity;
+
 import java.util.List;
 
 /**

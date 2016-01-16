@@ -26,6 +26,7 @@ public class Obserwowane_fragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+
         rootview = inflater.inflate(R.layout.obserwowane_layout, container, false);
 
         TabLayout tabLayout = (TabLayout) rootview.findViewById(R.id.tab_layout);

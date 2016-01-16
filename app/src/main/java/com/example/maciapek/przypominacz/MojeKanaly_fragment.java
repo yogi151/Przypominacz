@@ -33,7 +33,7 @@ public class MojeKanaly_fragment extends Fragment implements MaterialTabListener
         viewPager = (ViewPager)rootview.findViewById(R.id.viewPager);
 
         viewPager.setAdapter((new ViewPagerAdapterS(getActivity().getSupportFragmentManager(), Titles, Titles.length)));
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+       viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 tabHost.setSelectedNavigationItem(position);

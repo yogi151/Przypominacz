@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip">
+        <ImageView
+            android:id="@+id/filmCoverImage"
+            android:layout_width="100dip"
+            android:layout_height="100dip" />
+    </LinearLayout>
+ 
+    <TextView
+        android:id="@+id/filmTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/filmOriginalTittle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#343434"
+        android:layout_below="@id/filmTittle"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"  />
+ 
+    <ImageView
+        android:id="@+id/chooseImage"
+        android:layout_width="45dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true" 
+        android:layout_toRightOf="@+id/filmTittle"/>
+
+</RelativeLayout>

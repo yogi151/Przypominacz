@@ -25,7 +25,6 @@ public class MenuFilmy_fragment extends Fragment{
     private String[] releaseDateF = {"01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001","01.01.2001"};
     private Boolean b = true;
     private Bundle args = new Bundle();
-    private Bundle adres = new Bundle();
     private CharSequence[] data; //TODO: przekazanie argumentów do FilmView
 
     @Nullable

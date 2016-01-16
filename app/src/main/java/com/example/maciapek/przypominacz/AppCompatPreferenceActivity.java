@@ -1,4 +1,4 @@
-package com.example.maciapek.przypominacz;
+package com.example.maciapek.przypominacz.utils;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
