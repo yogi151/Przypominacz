@@ -11,34 +11,37 @@ import com.example.maciapek.przypominacz.model.Channel;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class ChannelListActivity extends Activity {
+public class ChannelListActivity extends Fragment {
 	
 	private ListView listViewChannel;
 	private Context ctx;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_channel_list);
-		
-		ctx = this;
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		//setContentView(R.layout.activity_channel_list);
+		View rootview = inflater.inflate(R.layout.activity_channel_list, container, false);
+		ctx = getActivity().getApplicationContext();
 		
 		FilmwebApi api = new FilmwebApi();
 		final List<Channel> channelList = api.getChannels();
 		
 		if(channelList.isEmpty()) {
-    		Toast.makeText(ChannelListActivity.this, "Brak znalezionych kanałów", Toast.LENGTH_LONG).show();
+    		Toast.makeText(getActivity().getApplicationContext(), "Brak znalezionych kanałów", Toast.LENGTH_LONG).show();
     	}
     	
-		listViewChannel = ( ListView ) findViewById(R.id.channel_list);
+		listViewChannel = ( ListView )rootview.findViewById(R.id.channel_list);
 		listViewChannel.setAdapter( new ChannelListAdapter(ctx, R.layout.channel_list_item, channelList));
 		
 		listViewChannel.setOnItemClickListener(new OnItemClickListener() {
@@ -49,24 +52,8 @@ public class ChannelListActivity extends Activity {
             	ObservedChannelList.addChannel((Channel)parent.getItemAtPosition(position));
 			}
 		});
+		return rootview;
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }
+

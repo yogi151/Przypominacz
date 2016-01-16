@@ -13,10 +13,22 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.maciapek.przypominacz.activities.MovieListActivity;
+import com.example.maciapek.przypominacz.enums.Type;
 
 
 public class ObserwowaneSeriale extends Fragment {
+//TODO: obserwowane seriale
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        Fragment fragment = new MovieListActivity();
+        Bundle b = new Bundle();
+        b.putString("title", "");
+        b.putString("type", Type.OBSERVED.name());
+        fragment.setArguments(b);
+    }
 
+/*
     //TODO: lista nadchodzących premier odcinków i uri układek
     private String[] episodes = {"Sjeden", "Sdwa", "Strzy", "Scztery", "Spięć", "Ssześć","Ssiedem", "Sosiem", "Sdziewięć", "Sdziesięć", "Sjedenaście", "Sdwana","Strzyna", "Sczterna", "Spiętna", "Sszesna", "Ssiedemna", "Sosiemna","Sdziewiętna", "Sdwadz", "Sd jeden", "Sd dwa", "Sd trzy", "Sd cztery"};
     private String[] coverUriSeries = {"http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg","http://1.fwcdn.pl/po/68/48/476848/7604108.3.jpg","http://1.fwcdn.pl/po/06/68/430668/7241342.3.jpg"};
@@ -59,5 +71,5 @@ public class ObserwowaneSeriale extends Fragment {
         );
 
         return rootview;
-    }
+    }*/
 }

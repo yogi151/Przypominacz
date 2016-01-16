@@ -19,13 +19,6 @@
         app:showAsAction="ifRoom"
         />
 
-    <item
-        android:id="@+id/action_user"
-        android:orderInCategory="300"
-        android:title="@string/user_name"
-        android:icon="@drawable/avatar"
-        app:showAsAction="ifRoom"
-        />
 
 
 </menu>

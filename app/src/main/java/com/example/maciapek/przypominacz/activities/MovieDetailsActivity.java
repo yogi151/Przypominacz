@@ -14,39 +14,44 @@ import com.example.maciapek.przypominacz.utils.Utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MovieDetailsActivity extends Activity {
+public class MovieDetailsActivity extends Fragment {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_movie_details);
-		
-		Bundle b = getIntent().getExtras();
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		//setContentView(R.layout.activity_movie_details);
+		View rootview = inflater.inflate(R.layout.activity_movie_details, container, false);
+		//Bundle b = getIntent().getExtras();
+		Bundle b = getArguments();
 		int id = b.getInt("id");
 		final Film film = CacheList.getFilm(id);		
 		
-		final ImageView cover = (ImageView) findViewById(R.id.imageView1);
-		final TextView title = (TextView) findViewById(R.id.textView1);
-		final TextView originalTitle = (TextView) findViewById(R.id.textView5);
-		final TextView rate = (TextView) findViewById(R.id.textView2);
-		final TextView votes = (TextView) findViewById(R.id.textView3);
-		final TextView duration = (TextView) findViewById(R.id.textView4);
-		final TextView genre = (TextView) findViewById(R.id.textView6);
-		final TextView countries = (TextView) findViewById(R.id.textView7);
-		final TextView premiere = (TextView) findViewById(R.id.textView8);
-		final TextView seasonsCount = (TextView) findViewById(R.id.textView9);
-		final TextView episodesCount = (TextView) findViewById(R.id.textView10);
-		final TextView description = (TextView) findViewById(R.id.textView11);
-		final TextView synopsis = (TextView) findViewById(R.id.textView12);
-		final Button reviewButton = (Button) findViewById(R.id.button1);
-		final TextView actors = (TextView) findViewById(R.id.textView13);
+		final ImageView cover = (ImageView) rootview.findViewById(R.id.imageView1);
+		final TextView title = (TextView) rootview.findViewById(R.id.textView1);
+		final TextView originalTitle = (TextView) rootview.findViewById(R.id.textView5);
+		final TextView rate = (TextView) rootview.findViewById(R.id.textView2);
+		final TextView votes = (TextView) rootview.findViewById(R.id.textView3);
+		final TextView duration = (TextView) rootview.findViewById(R.id.textView4);
+		final TextView genre = (TextView) rootview.findViewById(R.id.textView6);
+		final TextView countries = (TextView) rootview.findViewById(R.id.textView7);
+		final TextView premiere = (TextView) rootview.findViewById(R.id.textView8);
+		final TextView seasonsCount = (TextView) rootview.findViewById(R.id.textView9);
+		final TextView episodesCount = (TextView) rootview.findViewById(R.id.textView10);
+		final TextView description = (TextView) rootview.findViewById(R.id.textView11);
+		final TextView synopsis = (TextView) rootview.findViewById(R.id.textView12);
+		final Button reviewButton = (Button) rootview.findViewById(R.id.button1);
+		final TextView actors = (TextView) rootview.findViewById(R.id.textView13);
 		
-		final ImageView addButton = (ImageView) findViewById(R.id.imageView2);
+		final ImageView addButton = (ImageView) rootview.findViewById(R.id.imageView2);
 				addButton.setOnClickListener(new View.OnClickListener() {
 
 					@Override
@@ -78,7 +83,7 @@ public class MovieDetailsActivity extends Activity {
 			reviewButton.setVisibility(View.VISIBLE);
 		}
 		
-		// TODO jeszcze fotki ich strzeli� :)
+		// TODO jeszcze fotki ich strzelic :)
 		ArrayList<Person> actorsList = film.getActors();
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktorzy: ");
@@ -110,13 +115,21 @@ public class MovieDetailsActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-            	Intent intent = new Intent(MovieDetailsActivity.this, ReviewActivity.class);
+            	/*Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
             	Bundle b = new Bundle();
             	b.putInt("id", film.getId());
             	intent.putExtras(b);
-            	startActivity(intent);				
+            	startActivity(intent);*/
+				ReviewActivity reviewActivity = new ReviewActivity();
+				Bundle b = new Bundle();
+				b.putInt("id", film.getId());
+				reviewActivity.setArguments(b);
+				FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+				ft.replace(R.id.content_frame, reviewActivity);
+				ft.commit();
 			}
 		});
+		return rootview;
 	}
 	
 }

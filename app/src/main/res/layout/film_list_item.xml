@@ -13,7 +13,7 @@
             android:layout_width="100dip"
             android:layout_height="100dip" />
     </LinearLayout>
- 
+
     <TextView
         android:id="@+id/filmTittle"
         android:layout_width="wrap_content"
@@ -32,14 +32,14 @@
         android:layout_below="@id/filmTittle"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/thumbnail"  />
- 
+
     <ImageView
         android:id="@+id/chooseImage"
         android:layout_width="45dp"
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
-        android:layout_centerVertical="true" 
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/filmTittle"/>
 
 </RelativeLayout>

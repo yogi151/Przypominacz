@@ -3,6 +3,7 @@ package com.example.maciapek.przypominacz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,13 +16,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 
 
+import com.example.maciapek.przypominacz.activities.ChannelListActivity;
+import com.example.maciapek.przypominacz.activities.MovieListActivity;
+import com.example.maciapek.przypominacz.enums.Type;
+import com.example.maciapek.przypominacz.receiver.ReminderReceiver;
+
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private boolean viewIsAtHome;
-
-     /* String NAME = "M M";
-    String EMAIL = "@string/user_email";
-    int PROFILE = R.drawable.avatar;*/
+    ReminderReceiver r = new ReminderReceiver();
 
 
     @Override
@@ -30,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        r.SetAlarm(this);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -92,27 +102,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Fragment fragment = null;
         String title = getString(R.string.app_name);
-
+        Bundle b = new Bundle();
         switch (viewId) {
             case R.id.nav_home:
-                fragment = new HomeActivity();
+                //fragment = new HomeActivity();
+                fragment = new MovieListActivity();
+                b.putString("title", "");
+                b.putString("type", Type.UPCOMMING.name());
+                fragment.setArguments(b);
                 viewIsAtHome = true;
                 break;
 
             case R.id.nav_filmy:
-                fragment = new MenuFilmy_fragment();
+                //fragment = new MenuFilmy_fragment();
                 title  = "Filmy";
+                fragment = new MovieListActivity();
+                b.putString("title", "");
+                b.putString("type", Type.POPULAR.name());
+                fragment.setArguments(b);
                 viewIsAtHome = false;
                 break;
 
             case R.id.nav_seriale:
-                fragment = new MenuSeriale_fragment();
+              //  fragment = new MenuSeriale_fragment();
                 title = "Seriale";
+                fragment = new MovieListActivity();
+                b.putString("title", "");
+                b.putString("type", Type.POPULAR.name());
+                fragment.setArguments(b);
                 viewIsAtHome = false;
                 break;
 
             case R.id.nav_lista_kanalow:
-                fragment = new MenuListaKanalow_fragment();
+                fragment = new ChannelListActivity();
                 title = "Lista kanałów";
                 viewIsAtHome = false;
                 break;

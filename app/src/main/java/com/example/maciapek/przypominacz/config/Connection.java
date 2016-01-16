@@ -1,5 +1,7 @@
 package com.example.maciapek.przypominacz.config;
 
+import android.os.AsyncTask;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -155,12 +157,30 @@ public class Connection {
         return res;
     }
 
+   /* private class GetJsonAsync extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            // Do stuff before the operation
+        }
+
+        @Override
+        protected String doInBackground(String... params){
+            return getResp();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // Do stuff after the operation
+        }
+    }*/
     /**
      * Uzyskanie odpowiedzi z serwera
-     * @return Odpowied� serwera
+     * @return Odpowiedz serwera
      */
-    public String getResponse() {
 
+
+    public String getResponse(){
         String resp = "";
 
         String params = this.prepareParams();
@@ -202,6 +222,8 @@ public class Connection {
         }
         return resp;
     }
-}
+    }
+
+
 
 
