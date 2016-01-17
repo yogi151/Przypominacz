@@ -22,9 +22,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MovieDetailsActivity extends Fragment {
-
+	private Boolean c = true;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
@@ -50,15 +51,28 @@ public class MovieDetailsActivity extends Fragment {
 		final TextView synopsis = (TextView) rootview.findViewById(R.id.textView12);
 		final Button reviewButton = (Button) rootview.findViewById(R.id.button1);
 		final TextView actors = (TextView) rootview.findViewById(R.id.textView13);
-		
+
+
 		final ImageView addButton = (ImageView) rootview.findViewById(R.id.imageView2);
 				addButton.setOnClickListener(new View.OnClickListener() {
 
+					//TODO: do ifa sprawdzenie warunku czy w obserwowanych
 					@Override
 					public void onClick(View v) {
-						ReminderApi.observeFilm(film);						
+						//ReminderApi.observeFilm(film);
+						if (c) {
+							Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
+							addButton.setImageResource(R.drawable.minus);
+							ReminderApi.observeFilm(film);
+							c = false;
+						} else {
+							Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
+							addButton.setImageResource(R.drawable.plus);
+							ReminderApi.stopObserve(film);
+							c = true;
+						}
 					}
-					
+
 				});;
 		
 		cover.setImageBitmap(film.getCover());

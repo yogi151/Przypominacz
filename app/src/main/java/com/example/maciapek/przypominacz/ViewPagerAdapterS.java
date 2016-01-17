@@ -1,14 +1,10 @@
 package com.example.maciapek.przypominacz;
 
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
-/**
- * Created by Maciapek on 2016-01-04.
- */
 public class ViewPagerAdapterS extends ViewPagerAdapter {
 
     private Bundle bundl;

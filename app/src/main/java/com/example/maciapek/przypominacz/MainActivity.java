@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle b = new Bundle();
         switch (viewId) {
             case R.id.nav_home:
-                //fragment = new HomeActivity();
                 fragment = new MovieListActivity();
                 b.putString("title", "");
                 b.putString("type", Type.UPCOMMING.name());
@@ -114,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_filmy:
-                //fragment = new MenuFilmy_fragment();
                 title  = "Filmy";
                 fragment = new MovieListActivity();
                 b.putString("title", "");
@@ -124,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_seriale:
-              //  fragment = new MenuSeriale_fragment();
                 title = "Seriale";
                 fragment = new MovieListActivity();
                 b.putString("title", "");
