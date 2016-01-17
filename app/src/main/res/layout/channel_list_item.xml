@@ -1,27 +1,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:padding="2dp"
+    android:background="@color/colorBackground">
 
     <LinearLayout android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dip">
+        android:layout_marginRight="3dip">
         <ImageView
             android:id="@+id/channelLogo"
-            android:layout_width="100dip"
-            android:layout_height="100dip" />
+            android:layout_width="69dip"
+            android:layout_height="69dip"
+            android:src="@drawable/reel"/>
     </LinearLayout>
  
-    <TextView
-        android:id="@+id/channelName"
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:textColor="#040404"
-        android:typeface="sans"
-        android:textStyle="bold"/>
+        android:layout_toEndOf="@+id/thumbnail"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1100">
+            <TextView
+                android:id="@+id/channelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextPrimary"
+                android:typeface="sans"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_toEndOf="@+id/text"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/plus"
+            android:layout_margin="9dp"
+            android:id="@+id/addOrRemove"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+
+
+
 
 </RelativeLayout>

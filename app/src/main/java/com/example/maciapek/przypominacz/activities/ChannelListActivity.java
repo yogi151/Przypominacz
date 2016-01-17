@@ -6,6 +6,7 @@ import com.example.maciapek.przypominacz.ObservedChannelList;
 import com.example.maciapek.przypominacz.R;
 import com.example.maciapek.przypominacz.adapters.ChannelListAdapter;
 import com.example.maciapek.przypominacz.api.FilmwebApi;
+import com.example.maciapek.przypominacz.api.ReminderApi;
 import com.example.maciapek.przypominacz.model.Channel;
 
 import android.app.Activity;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,6 +28,7 @@ public class ChannelListActivity extends Fragment {
 	
 	private ListView listViewChannel;
 	private Context ctx;
+	Boolean c = true;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,13 +46,25 @@ public class ChannelListActivity extends Fragment {
     	
 		listViewChannel = ( ListView )rootview.findViewById(R.id.channel_list);
 		listViewChannel.setAdapter( new ChannelListAdapter(ctx, R.layout.channel_list_item, channelList));
-		
+
+		//TODO: do ifa sprawdzenie warunku czy w obserwowanych
 		listViewChannel.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-            	ObservedChannelList.addChannel((Channel)parent.getItemAtPosition(position));
+				ImageView addButton = (ImageView)view.findViewById(R.id.addOrRemove);
+				if (c) {
+					ObservedChannelList.addChannel((Channel) parent.getItemAtPosition(position));
+					Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
+					addButton.setImageResource(R.drawable.minus);
+					c = false;
+				} else {
+					Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
+					addButton.setImageResource(R.drawable.plus);
+					ObservedChannelList.removeChannel((Channel) parent.getItemAtPosition(position));
+					c = true;
+				}
 			}
 		});
 		return rootview;

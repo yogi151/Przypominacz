@@ -36,24 +36,25 @@ public class MovieDetailsActivity extends Fragment {
 		int id = b.getInt("id");
 		final Film film = CacheList.getFilm(id);		
 		
-		final ImageView cover = (ImageView) rootview.findViewById(R.id.imageView1);
-		final TextView title = (TextView) rootview.findViewById(R.id.textView1);
-		final TextView originalTitle = (TextView) rootview.findViewById(R.id.textView5);
-		final TextView rate = (TextView) rootview.findViewById(R.id.textView2);
-		final TextView votes = (TextView) rootview.findViewById(R.id.textView3);
-		final TextView duration = (TextView) rootview.findViewById(R.id.textView4);
-		final TextView genre = (TextView) rootview.findViewById(R.id.textView6);
-		final TextView countries = (TextView) rootview.findViewById(R.id.textView7);
-		final TextView premiere = (TextView) rootview.findViewById(R.id.textView8);
+		final ImageView cover = (ImageView) rootview.findViewById(R.id.cover);
+		final TextView title = (TextView) rootview.findViewById(R.id.engTitle);
+		final TextView originalTitle = (TextView) rootview.findViewById(R.id.originalTitle);
+		final TextView rate = (TextView) rootview.findViewById(R.id.rate);
+		final TextView votes = (TextView) rootview.findViewById(R.id.numberOfVotes);
+		final TextView duration = (TextView) rootview.findViewById(R.id.duration);
+		final TextView genre = (TextView) rootview.findViewById(R.id.genre);
+		final TextView countries = (TextView) rootview.findViewById(R.id.countries);
+		final TextView premiere = (TextView) rootview.findViewById(R.id.premiere);
 		final TextView seasonsCount = (TextView) rootview.findViewById(R.id.textView9);
 		final TextView episodesCount = (TextView) rootview.findViewById(R.id.textView10);
-		final TextView description = (TextView) rootview.findViewById(R.id.textView11);
-		final TextView synopsis = (TextView) rootview.findViewById(R.id.textView12);
+		final TextView description = (TextView) rootview.findViewById(R.id.description);
+		final TextView synopsis = (TextView) rootview.findViewById(R.id.synopsis);
 		final Button reviewButton = (Button) rootview.findViewById(R.id.button1);
-		final TextView actors = (TextView) rootview.findViewById(R.id.textView13);
+		final TextView actors = (TextView) rootview.findViewById(R.id.actors);
 
 
-		final ImageView addButton = (ImageView) rootview.findViewById(R.id.imageView2);
+		//TODO: warunek czy obserwowany
+		final ImageView addButton = (ImageView) rootview.findViewById(R.id.addOrRemove);
 				addButton.setOnClickListener(new View.OnClickListener() {
 
 					//TODO: do ifa sprawdzenie warunku czy w obserwowanych
@@ -62,12 +63,12 @@ public class MovieDetailsActivity extends Fragment {
 						//ReminderApi.observeFilm(film);
 						if (c) {
 							Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
-							addButton.setImageResource(R.drawable.minus);
+							addButton.setImageResource(R.drawable.remove);
 							ReminderApi.observeFilm(film);
 							c = false;
 						} else {
 							Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
-							addButton.setImageResource(R.drawable.plus);
+							addButton.setImageResource(R.drawable.add);
 							ReminderApi.stopObserve(film);
 							c = true;
 						}
@@ -129,18 +130,18 @@ public class MovieDetailsActivity extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-            	/*Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
+            	Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
             	Bundle b = new Bundle();
             	b.putInt("id", film.getId());
             	intent.putExtras(b);
-            	startActivity(intent);*/
-				ReviewActivity reviewActivity = new ReviewActivity();
+            	startActivity(intent);
+				/*ReviewActivity reviewActivity = new ReviewActivity();
 				Bundle b = new Bundle();
 				b.putInt("id", film.getId());
 				reviewActivity.setArguments(b);
 				FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 				ft.replace(R.id.content_frame, reviewActivity);
-				ft.commit();
+				ft.commit();*/
 			}
 		});
 		return rootview;
