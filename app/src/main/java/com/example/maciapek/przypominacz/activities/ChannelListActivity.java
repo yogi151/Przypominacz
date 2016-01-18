@@ -73,22 +73,26 @@ public class ChannelListActivity extends Fragment {
 					int position, long id) {
 				int ide = (int)id;
 
-				Boolean c = isObservedChannel(ide);
+				Channel channel = channelList.get(position);
+				//Boolean c = isObservedChannel(ide);
 				//Channel channel = view;
 				//Boolean c = isObservedChannel(channel.getId());
+				Boolean c = isObservedChannel(channel.getId());
 
 				ImageView addButton = (ImageView)view.findViewById(R.id.addOrRemove);
 				if (!c) {
 					ObservedChannelList.addChannel((Channel) parent.getItemAtPosition(position));
 					Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
 					addButton.setImageResource(R.drawable.minus);
-					c = isObservedChannel(ide);
+					//c = isObservedChannel(ide);
+					c = isObservedChannel(channel.getId());
 
 				} else {
 					Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
 					addButton.setImageResource(R.drawable.plus);
 					ObservedChannelList.removeChannel((Channel) parent.getItemAtPosition(position));
-					c = isObservedChannel(ide);
+					//c = isObservedChannel(ide);
+					c = isObservedChannel(channel.getId());
 				}
 			}
 		});

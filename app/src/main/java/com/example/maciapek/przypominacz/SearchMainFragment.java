@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.example.maciapek.przypominacz.activities.MovieListActivity;
 import com.example.maciapek.przypominacz.enums.Type;
@@ -24,10 +25,20 @@ public class SearchMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
      View rootview = inflater.inflate(R.layout.fragment_search_main, container, false);
-
+/*
         final EditText editText = (EditText)rootview.findViewById(R.id.search);
         ImageView searchButton = (ImageView)rootview.findViewById(R.id.searchButtonF);
         searchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MovieListActivity.class);
+                Bundle b = new Bundle();
+                b.putString("title", editText.getText().toString());
+                b.putString("type", Type.FILM.name());
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+       /* searchButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -43,7 +54,7 @@ public class SearchMainFragment extends Fragment {
                 ft.commit();
             }
 
-        });;
+        });;*/
 
 
         return rootview;

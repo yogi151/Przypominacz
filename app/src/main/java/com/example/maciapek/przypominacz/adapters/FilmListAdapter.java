@@ -51,7 +51,7 @@ public class FilmListAdapter extends ArrayAdapter<Film> {
         ImageView filmCover = (ImageView) convertView.findViewById(R.id.filmCoverImage);
         filmCover.setImageBitmap(film.getCircleCover());
 
-        //TODO: warunek ifa czy w obserwowanych
+
         final ImageView addButton = (ImageView) convertView.findViewById(R.id.addOrRemove);
         if(isObserved(film.getId())) {
 

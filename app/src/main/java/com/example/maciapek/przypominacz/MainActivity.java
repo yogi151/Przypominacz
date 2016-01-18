@@ -19,6 +19,7 @@ import android.support.v4.app.Fragment;
 import com.example.maciapek.przypominacz.activities.ChannelListActivity;
 import com.example.maciapek.przypominacz.activities.MovieListActivity;
 import com.example.maciapek.przypominacz.enums.Type;
+import com.example.maciapek.przypominacz.login.LoginPage;
 import com.example.maciapek.przypominacz.receiver.ReminderReceiver;
 
 
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //Intent intent = new Intent(this, LoginPage.class);
+        ///startActivity(intent);
 
         displayView(R.id.nav_home);
     }
