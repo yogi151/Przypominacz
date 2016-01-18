@@ -10,10 +10,13 @@ import com.example.maciapek.przypominacz.model.Film;
 import com.example.maciapek.przypominacz.model.Person;
 import com.example.maciapek.przypominacz.model.Series;
 import com.example.maciapek.przypominacz.utils.Utils;
+import com.example.maciapek.przypominacz.ObservedFilmList;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -24,8 +27,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.maciapek.przypominacz.ObservedFilmList.isObserved;
+
 public class MovieDetailsActivity extends Fragment {
-	private Boolean c = true;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
@@ -33,8 +38,9 @@ public class MovieDetailsActivity extends Fragment {
 		View rootview = inflater.inflate(R.layout.activity_movie_details, container, false);
 		//Bundle b = getIntent().getExtras();
 		Bundle b = getArguments();
-		int id = b.getInt("id");
-		final Film film = CacheList.getFilm(id);		
+		final int id = b.getInt("id");
+		final Film film = CacheList.getFilm(id);
+
 		
 		final ImageView cover = (ImageView) rootview.findViewById(R.id.cover);
 		final TextView title = (TextView) rootview.findViewById(R.id.engTitle);
@@ -52,25 +58,38 @@ public class MovieDetailsActivity extends Fragment {
 		final Button reviewButton = (Button) rootview.findViewById(R.id.button1);
 		final TextView actors = (TextView) rootview.findViewById(R.id.actors);
 
-
-		//TODO: warunek czy obserwowany
 		final ImageView addButton = (ImageView) rootview.findViewById(R.id.addOrRemove);
+		if(isObserved(id)) {
+
+			addButton.setImageResource(R.drawable.remove);
+		}else {
+
+			addButton.setImageResource(R.drawable.add);
+		}
+
+
+
 				addButton.setOnClickListener(new View.OnClickListener() {
 
 					//TODO: do ifa sprawdzenie warunku czy w obserwowanych
+
 					@Override
 					public void onClick(View v) {
 						//ReminderApi.observeFilm(film);
-						if (c) {
+						//int id = film.getId();
+						Boolean c = isObserved(id);
+						if (!c) {
 							Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
 							addButton.setImageResource(R.drawable.remove);
 							ReminderApi.observeFilm(film);
-							c = false;
+							c = isObserved(id);
+
 						} else {
 							Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
 							addButton.setImageResource(R.drawable.add);
 							ReminderApi.stopObserve(film);
-							c = true;
+							c = isObserved(id);
+
 						}
 					}
 

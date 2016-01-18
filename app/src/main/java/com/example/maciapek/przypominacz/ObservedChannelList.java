@@ -28,6 +28,13 @@ public class ObservedChannelList {
 			readFile();
 		}
 	}
+	public static boolean isObservedChannel(int id) {
+		if(observedChannels == null){
+			return false;
+		}else {
+			return observedChannels.containsKey(id);
+		}
+	}
 	
 	public static Channel getChannel(Integer id) {
 		if(observedChannels == null) {

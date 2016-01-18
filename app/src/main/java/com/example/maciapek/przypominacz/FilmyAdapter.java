@@ -31,7 +31,7 @@ public class FilmyAdapter extends ArrayAdapter<String>{
         this.releaseDate = releaseDate;
     }
 
-    //TODO: jeśli film w obserwowanych zmieniać ikonę na minus
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

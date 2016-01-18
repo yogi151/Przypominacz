@@ -18,16 +18,21 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:layout_weight="2">
 
                 <AutoCompleteTextView
                     android:id="@+id/search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_search"
+                    android:hint= "Wyszukaj filmy"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -35,13 +40,57 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/results"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchButtonF"
+                android:src="@drawable/searchblack"
+                android:layout_gravity="end"
+                android:layout_weight="1"/>
+            </LinearLayout>
 
+
+
+
+    <LinearLayout
+        android:id="@+id/searchPhrase2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2">
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchSeries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint= "Wyszukaj seriale"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAlignment="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchButtonS"
+                android:src="@drawable/searchblack"
+                android:layout_gravity="end"
+                android:layout_weight="1"/>
         </LinearLayout>
 
 
-
 </LinearLayout>
+</LinearLayout>
+
+    </LinearLayout>

@@ -37,6 +37,14 @@ public class ObservedFilmList {
 			CacheList.setFilms(observedFilms);
 		}
 	}
+
+	public static boolean isObserved(int id) {
+		if(observedFilms == null) {
+			return false;
+		}else {
+			return observedFilms.containsKey(id);
+		}
+	}
 	
 	public static Film getFilm(Integer id) {
 		if(observedFilms == null) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import static com.example.maciapek.przypominacz.ObservedChannelList.isObservedChannel;
 
 import com.example.maciapek.przypominacz.R;
 import com.example.maciapek.przypominacz.model.Channel;
@@ -38,6 +40,16 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
              
         ImageView channelLogo = (ImageView) convertView.findViewById(R.id.channelLogo);
         channelLogo.setImageBitmap(channel.getLogo());
+
+        ImageView addButton = (ImageView) convertView.findViewById(R.id.addOrRemove);
+        Boolean c = isObservedChannel(channel.getId());
+        if(c) {
+            addButton.setImageResource(R.drawable.minus);
+            c = isObservedChannel(channel.getId());
+        }else {
+            addButton.setImageResource(R.drawable.plus);
+            c = isObservedChannel(channel.getId());
+        }
         
         return convertView;
     }

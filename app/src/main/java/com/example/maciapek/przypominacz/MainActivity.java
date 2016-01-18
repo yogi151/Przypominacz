@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_lista_kanalow:
                 fragment = new ChannelListActivity();
                 title = "Lista kanałów";
+                b.putString("type", "all");
+                fragment.setArguments(b);
                 viewIsAtHome = false;
                 break;
 
@@ -145,8 +147,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_moje_kanaly:
-                fragment = new MojeKanaly_fragment();
                 title = "Moje kanały";
+                fragment = new ChannelListActivity();
+                b.putString("type", "observed");
+                fragment.setArguments(b);
                 viewIsAtHome = false;
                 break;
 
