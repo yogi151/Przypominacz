@@ -71,13 +71,14 @@ public class ChannelListActivity extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				int ide = (int)id;
+				//int ide = (int)id;
 
 				Channel channel = channelList.get(position);
 				//Boolean c = isObservedChannel(ide);
 				//Channel channel = view;
 				//Boolean c = isObservedChannel(channel.getId());
-				Boolean c = isObservedChannel(channel.getId());
+				int idg = ((Channel) parent.getItemAtPosition(position)).getId();
+				Boolean c = isObservedChannel(idg);
 
 				ImageView addButton = (ImageView)view.findViewById(R.id.addOrRemove);
 				if (!c) {
@@ -85,14 +86,14 @@ public class ChannelListActivity extends Fragment {
 					Toast.makeText(getActivity().getApplicationContext(), R.string.added, Toast.LENGTH_SHORT).show();
 					addButton.setImageResource(R.drawable.minus);
 					//c = isObservedChannel(ide);
-					c = isObservedChannel(channel.getId());
+					c = isObservedChannel(((Channel) parent.getItemAtPosition(position)).getId());
 
 				} else {
 					Toast.makeText(getActivity().getApplicationContext(), R.string.removed, Toast.LENGTH_SHORT).show();
 					addButton.setImageResource(R.drawable.plus);
 					ObservedChannelList.removeChannel((Channel) parent.getItemAtPosition(position));
 					//c = isObservedChannel(ide);
-					c = isObservedChannel(channel.getId());
+					c = isObservedChannel(((Channel) parent.getItemAtPosition(position)).getId());
 				}
 			}
 		});

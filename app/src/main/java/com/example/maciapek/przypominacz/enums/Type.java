@@ -4,8 +4,10 @@ public enum Type {
     FILM(0), 
     SERIES(1),
     POPULAR(2),
-    UPCOMMING(3),
-    OBSERVED(4);
+    POPULARSERIES(3),
+    UPCOMMING(4),
+    OBSERVED(5),
+    OBSERVEDSERIES(6);
     
 
     private int code;

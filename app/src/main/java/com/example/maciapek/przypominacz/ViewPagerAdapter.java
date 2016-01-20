@@ -51,7 +51,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             Fragment tab2 = new MovieListActivity();
             Bundle b = new Bundle();
             b.putString("title", "");
-            b.putString("type", Type.OBSERVED.name());
+            b.putString("type", Type.OBSERVEDSERIES.name());
             tab2.setArguments(b);
             return tab2;
         }

@@ -70,7 +70,15 @@ public class FilmwebApi {
     public ArrayList<Channel> getChannels() {
     	return ca.getChannels();
     }
-    
+    public List<Channel> getObservedChannels() {
+        return ca.getObservedChannels();
+    }
+    public ArrayList<Film> getObservedSeries() {
+        return ca.getObservedSeries();
+    }
+    public ArrayList<Film> getPopularSeries() {
+                return ca.getPopularSeries();
+            }
     public ArrayList<Film> getObservedFilms() {
     	return ca.getObservedFilms();
     }

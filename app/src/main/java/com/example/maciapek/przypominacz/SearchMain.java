@@ -25,11 +25,11 @@ public class SearchMain extends AppCompatActivity {
         //setContentView(R.layout.activity_search_main);
         setContentView(R.layout.fragment_search_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
-        final EditText editText = (EditText)findViewById(R.id.search);
+       final EditText editText = (EditText)findViewById(R.id.search);
         ImageView searchButton = (ImageView)findViewById(R.id.searchButtonF);
-     /*   searchButton.setOnClickListener(new View.OnClickListener() {
+       /* searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SearchMain.this, MovieListActivity.class);
                 Bundle b = new Bundle();
@@ -40,7 +40,7 @@ public class SearchMain extends AppCompatActivity {
             }
         });*/
 
-    /*    final EditText editText = (EditText)findViewById(R.id.search);
+       /* final EditText editText = (EditText)findViewById(R.id.search);
         final EditText editText1 = (EditText)findViewById(R.id.searchSeries);
         ImageView searchButtonF = (ImageView)findViewById(R.id.searchButtonF);
         ImageView searchButtonS = (ImageView)findViewById(R.id.searchButtonS);
@@ -53,9 +53,9 @@ public class SearchMain extends AppCompatActivity {
                 intent.putExtras(b);
                 startActivity(intent);
             }
-        });
+        });*/
 
-        searchButtonS.setOnClickListener(new View.OnClickListener() {
+      /*  searchButtonS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SearchMain.this, MovieListActivity.class);
                 Bundle b = new Bundle();
@@ -84,7 +84,7 @@ public class SearchMain extends AppCompatActivity {
 
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

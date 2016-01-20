@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.TextView;
 
 
 import com.example.maciapek.przypominacz.activities.ChannelListActivity;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private boolean viewIsAtHome;
     ReminderReceiver r = new ReminderReceiver();
+    public String name="";
+    public String email="";
+
 
 
     @Override
@@ -49,14 +54,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
+
+       // View hview =navigationView.inflateHeaderView(R.layout.nav_header_main);
+/*
+
+
+        TextView userName = (TextView)hview.findViewById(R.id.name);
+        TextView userEmail = (TextView)hview.findViewById(R.id.email);
+        try{
+            Bundle b=getIntent().getExtras();
+            email = b.getString("email");
+            name = b.getString("name");
+            userEmail.setText(email.toString());
+            userName.setText(name.toString());
+
+        }catch(Exception e){}*/
+
+
+
+      /*  Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);*/
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        //Intent intent = new Intent(this, LoginPage.class);
-        ///startActivity(intent);
-
         displayView(R.id.nav_home);
+
     }
 
     @Override
@@ -94,7 +118,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         else if (id == R.id.action_search) {
-            Intent intent = new Intent(this, SearchMain.class);
+           // Intent intent = new Intent(this, SearchMain.class);
+           // startActivity(intent);
+            return true;
+        }
+
+        else if (id == R.id.action_logout) {
+            Intent intent = new Intent(this, LoginPage.class);
             startActivity(intent);
             return true;
         }
@@ -130,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title = "Seriale";
                 fragment = new MovieListActivity();
                 b.putString("title", "");
-                b.putString("type", Type.POPULAR.name());
+                b.putString("type", Type.POPULARSERIES.name());
                 fragment.setArguments(b);
                 viewIsAtHome = false;
                 break;

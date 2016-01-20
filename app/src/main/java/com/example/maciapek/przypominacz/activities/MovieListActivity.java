@@ -1,5 +1,6 @@
 package com.example.maciapek.przypominacz.activities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.maciapek.przypominacz.R;
@@ -51,11 +52,15 @@ public class MovieListActivity extends Fragment {
 		} else if (Type.SERIES == type) {
 			addSeriesListView(title, rootview);
 		} else if (Type.POPULAR == type) {
-			addPopularListView(rootview);
-		} else if (Type.UPCOMMING == type) {
+			addPopularListView(rootview, type);
+		}else if (Type.POPULARSERIES == type) {
+			addPopularListView(rootview, type);
+		}else if (Type.UPCOMMING == type) {
 	    	addUpcommingListView(rootview);
 		} else if (Type.OBSERVED == type) {
-			addObservedListView(rootview);
+			addObservedListView(rootview, type);
+		}else if (Type.OBSERVEDSERIES == type) {
+			addObservedListView(rootview, type);
 		}
 
 		return rootview;
@@ -124,9 +129,14 @@ public class MovieListActivity extends Fragment {
 		});
 	}
 	
-	private void addPopularListView(View view) {
+	private void addPopularListView(View view, Type type) {
 		FilmwebApi api = new FilmwebApi();
-    	List<Film> filmList = api.getPopularFilms();
+    	List<Film> filmList = new ArrayList<Film>();
+		if(type == Type.POPULAR) {
+			filmList = api.getPopularFilms();
+		} else if(type == Type.POPULARSERIES) {
+			filmList = api.getPopularSeries();
+		}
     	if(filmList.isEmpty()) {
     		Toast.makeText(getActivity().getApplicationContext(), "Brak znalezionych filmów", Toast.LENGTH_LONG).show();
     	}
@@ -186,11 +196,17 @@ public class MovieListActivity extends Fragment {
 		});
 	}
 	
-	private void addObservedListView(View view) {
+	private void addObservedListView(View view, Type type) {
 		FilmwebApi api = new FilmwebApi();
-    	List<Film> filmList = api.getObservedFilms();
+    	List<Film> filmList = new ArrayList<Film>();
+		if(type == Type.OBSERVED) {
+			filmList = api.getObservedFilms();
+		} else if(type == Type.OBSERVEDSERIES) {
+			filmList = api.getObservedSeries();
+		}
+
     	if(filmList.isEmpty()) {
-    		Toast.makeText(getActivity().getApplicationContext(), "Brak obserwowanych filmów", Toast.LENGTH_LONG).show();
+    	//	Toast.makeText(getActivity().getApplicationContext(), "Brak obserwowanych filmów", Toast.LENGTH_LONG).show();
     	}
     	
     	listViewFilm = ( ListView ) view.findViewById(R.id.film_list);

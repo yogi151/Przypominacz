@@ -56,7 +56,7 @@ public class RegisterPage extends AppCompatActivity {
 
     public void checkIfDone(boolean b) throws InterruptedException {
         if(b){
-            Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+           /* Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
             //new UserInfo(this,this.userName.getText().toString()).execute();
             Intent intent = new Intent(this, UserProfile.class);
             Thread.sleep(500);
@@ -64,8 +64,10 @@ public class RegisterPage extends AppCompatActivity {
             bu.putString("name",un);
            // bu.putString("email",em);
             intent.putExtras(bu);
-            startActivity(intent);
-           // finish();;
+            startActivity(intent);*
+           // finish();;*/
+           Intent i = new Intent(this,LoginPage.class);
+            startActivity(i);
         }
         else{
             Toast.makeText(this,"Registration failed",Toast.LENGTH_SHORT).show();

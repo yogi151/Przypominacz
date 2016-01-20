@@ -2,11 +2,27 @@ package com.example.maciapek.przypominacz.login;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.maciapek.przypominacz.MainActivity;
@@ -16,6 +32,7 @@ public class LoginPage extends AppCompatActivity {
     public EditText userName;
     public EditText pass;
     public static final int PLEASE_WAIT_DIALOG=1;
+    Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +41,15 @@ public class LoginPage extends AppCompatActivity {
 
         this.userName = (EditText) findViewById(R.id.userName);
         this.pass = (EditText) findViewById(R.id.userPass);
+
+        register = (Button)findViewById(R.id.goToRegisterButton);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RegisterPage.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void clickLogin(View v){
@@ -35,7 +61,11 @@ public class LoginPage extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterPage.class);
         startActivity(intent);
 
+
+
     }
+
+
 
     public Dialog onCreateDialog(int dialogId) {
 
@@ -68,4 +98,6 @@ public class LoginPage extends AppCompatActivity {
         }
 
     }
+
+
 }

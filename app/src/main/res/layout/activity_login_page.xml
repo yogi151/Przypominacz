@@ -14,7 +14,7 @@
 
 
 
-        <TextView
+        <EditText
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,11 +22,12 @@
             android:textColor="@color/colorGrey2" />
 
 
-    <TextView
+    <EditText
         android:id="@+id/userPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password"
+        android:inputType="textPassword"
         android:textColor="@color/colorGrey2" />
 
 
@@ -44,6 +45,6 @@
         android:layout_height="wrap_content"
         android:text="Register now"
         android:textColor="@color/colorTextPrimary"
-        android:onClick="clickGoTo"/>
+       />
 
 </LinearLayout>

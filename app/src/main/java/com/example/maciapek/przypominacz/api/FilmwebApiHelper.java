@@ -177,7 +177,12 @@ public class FilmwebApiHelper {
 					film.setDuration(filmEntry.isNull(4) ? null : Integer.valueOf(filmEntry.getInt(4)));
 					film.setCoverUrl(filmEntry.isNull(5) ? null : getURL(Config.URL_POSTER + filmEntry.getString(5)));
 					film.setId(id);
-					CacheList.setFilm(film);
+					try {
+						film.setFilmData();
+						CacheList.setFilm(film);
+					} catch (NullPointerException e) {
+
+					}
 				}
 				popularFilmList.add(film);
 			} catch (JSONException e) {
@@ -340,14 +345,18 @@ public class FilmwebApiHelper {
 
             //serial posiada kilka dodatkowych p�l
             if (film.getFilmType() == 1) {
-                Series series = (Series)film;
+				try{
+				Series series = (Series) film;
 
-                //liczba sezon�w
-                series.setSeasonsCount(entry.optInt(16, 0));
-                
-                //liczba odcink�w
-                series.setEpisodesCount(entry.optInt(17, 0));
-                CacheList.setFilm(series);
+				//liczba sezon�w
+				series.setSeasonsCount(entry.optInt(16, 0));
+
+				//liczba odcink�w
+				series.setEpisodesCount(entry.optInt(17, 0));
+				CacheList.setFilm(series);
+			} catch (ClassCastException e) {
+
+	}
             } else {
             	CacheList.setFilm(film);
             }
@@ -382,7 +391,9 @@ public class FilmwebApiHelper {
 			return s;
 		} catch (JSONException e) {
 			return "";
-		}   	
+		}  catch (NullPointerException e){
+			return "";
+		}
     }
     
     private Integer getInteger(JSONArray entry, int number) {

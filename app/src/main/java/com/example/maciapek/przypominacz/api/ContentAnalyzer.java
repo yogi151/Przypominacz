@@ -24,6 +24,7 @@ import org.jsoup.nodes.Element;
 import android.annotation.SuppressLint;
 
 import com.example.maciapek.przypominacz.CacheList;
+import com.example.maciapek.przypominacz.ObservedChannelList;
 import com.example.maciapek.przypominacz.ObservedFilmList;
 import com.example.maciapek.przypominacz.config.Config;
 import com.example.maciapek.przypominacz.config.Connection;
@@ -279,18 +280,61 @@ public class ContentAnalyzer {
         return series;
     }
     
-    public ArrayList<Film> getPopularFilms() {
+   /* public ArrayList<Film> getPopularFilms() {
     	Connection conn = new Connection();
         FilmwebApiHelper api = new FilmwebApiHelper(conn);
         return api.getPopularFilms();
-    }
+    }*/
     
     public ArrayList<Film> getUpcommingFilms() {
     	Connection conn = new Connection();
         FilmwebApiHelper api = new FilmwebApiHelper(conn);
         return api.getUpcommingFilms();
     }
-    
+    public ArrayList<Film> getObservedFilms() {
+        ArrayList<Film> observed = new ArrayList<Film>();
+        for(Film film : ObservedFilmList.getObserved()) {
+            if(film.getFilmType() == Type.FILM.getCode()) {
+                observed.add(film);
+            }
+        }
+        return observed;
+    }
+    public ArrayList<Film> getPopularFilms() {
+        Connection conn = new Connection();
+        FilmwebApiHelper api = new FilmwebApiHelper(conn);
+        ArrayList<Film> popular = new ArrayList<Film>();
+        for(Film film : api.getPopularFilms()) {
+            if(film.getFilmType()!= null &&  film.getFilmType()== Type.FILM.getCode()) {
+                popular.add(film);
+            }
+        }
+        return popular;
+    }
+
+    public ArrayList<Film> getPopularSeries() {
+        Connection conn = new Connection();
+        FilmwebApiHelper api = new FilmwebApiHelper(conn);
+        ArrayList<Film> popular = new ArrayList<Film>();
+        for(Film film : api.getPopularFilms()) {
+            if(film.getFilmType()!= null &&  film.getFilmType()== Type.SERIES.getCode()) {
+                popular.add(film);
+            }
+        }
+        return popular;
+    }
+    public ArrayList<Film> getObservedSeries() {
+        ArrayList<Film> observed = new ArrayList<Film>();
+        for(Film film : ObservedFilmList.getObserved()) {
+            if(film.getFilmType() == Type.SERIES.getCode()) {
+                observed.add(film);
+            }
+        }
+        return observed;
+    }
+    public ArrayList<Channel> getObservedChannels() {
+        return ObservedChannelList.getObserved();
+    }
     public ArrayList<Channel> getChannels() {
     	Connection conn = new Connection();
     	FilmwebApiHelper api = new FilmwebApiHelper(conn);
@@ -304,9 +348,9 @@ public class ContentAnalyzer {
     }
     
     
-    public ArrayList<Film> getObservedFilms() {
+   /* public ArrayList<Film> getObservedFilms() {
     	return ObservedFilmList.getObserved();
-    }
+    }*/
  
     @SuppressLint("SimpleDateFormat")
 	public Series setNextEpisodeData(Series series) {
